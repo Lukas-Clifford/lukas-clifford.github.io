@@ -64,10 +64,17 @@
 <button type="button" id="downloadXML" style="margin-top: 20px; display: none;">Descargar XML</button>
 <button id="translateButton" style="margin-top: 20px; display: none;">Traducir y Mostrar Traducciones</button>
 
-
 <script src="addListeners.js"></script>
 <script src="imageControls.js"></script>
 
+<!-- Solicitud de Cambios -->
+<div class="request-container">
+    <input type="text" id="changeRequest"
+        placeholder="Escribe los cambios que deseas (por ejemplo: Hazlo más formal)" />
+    <button id="requestChangeButton">Solicitar Cambios</button>
+</div>
+
+<script src="generateBlogWithChanges.js"></script>
 
 
 <!-- Secciones para traducciones -->
