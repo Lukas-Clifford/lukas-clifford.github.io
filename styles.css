@@ -1,0 +1,67 @@
+
+* {
+    box-sizing: border-box;
+    /* Incluye bordes y padding en el cálculo del ancho */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+}
+
+textarea,
+input,
+button,
+select {
+    margin: 10px 0;
+    display: block;
+    padding: 10px;
+    width: 100%;
+}
+
+.list {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+}
+
+.list-item {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.list-item label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.remove-item {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.preview-container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    align-items: center;
+    align-content: center;
+}
+
+.preview-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border: 2px solid #e0e0e0;
+}

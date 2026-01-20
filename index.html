@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Blogs con IA</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="functions.js"></script>
+</head>
+
+
+<body>
+
+<h1>Generador de Blogs</h1>
+
+<!-- Formulario para introducir todos los datos -->
+<form id="blogForm">
+    <label>Clave API (OpenAI):</label>
+    <input type="password" id="apiKey" placeholder="Introduce tu clave de API" />
+
+    <label>Orientación para los temas:</label>
+    <input type="text" id="orientation" placeholder="Introduce la orientación del tema (e.g., vapeo)" />
+
+    <div class="list">
+        <h2>Imágenes Relacionadas</h2>
+        <div id="imageContainer"></div>
+        <button type="button" id="addImage">Agregar Imagen</button>
+    </div>
+
+    <div class="list">
+        <h2>Productos Relacionados</h2>
+        <div id="productContainer"></div>
+        <button type="button" id="addProduct">Agregar Producto</button>
+    </div>
+
+
+    <label>Categorías (separadas por comas):</label>
+    <input type="text" id="categories" placeholder="Ej: Dev, Éste blog, Tutorial" />
+
+    <button type="button" id="generateBlog">Generar Blog</button>
+    <script src="generateBlogListener.js"></script>
+</form>
+
+
+
+
+<!-- Vista previa del contenido generado -->
+<div id="preview" class="preview-container">
+    <h2>Vista previa del blog</h2>
+    <div id="blogContent"></div>
+    <button type="button" id="downloadXML" style="margin-top: 20px; display: none;">Descargar XML</button>
+    <button id="translateButton" style="margin-top: 20px; display: none;">Traducir y Mostrar Traducciones</button>
+</div>
+
+<script src="addListeners.js"></script>
+
+
+
+
+<!-- Secciones para traducciones -->
+<div id="preview-section" style="display: none;">
+    <h3>Traducciones</h3>
+    <div id="translations">
+        <div id="english" class="translation-section">
+            <h4>Inglés</h4>
+            <div id="english-preview"></div>
+            <button class="xml-button" data-lang="en">Descargar XML (Inglés)</button>
+        </div>
+        <div id="german" class="translation-section">
+            <h4>Alemán</h4>
+            <div id="german-preview"></div>
+            <button class="xml-button" data-lang="de">Descargar XML (Alemán)</button>
+        </div>
+        <div id="portuguese" class="translation-section">
+            <h4>Portugués</h4>
+            <div id="portuguese-preview"></div>
+            <button class="xml-button" data-lang="pt">Descargar XML (Portugués)</button>
+        </div>
+    </div>
+</div>
+
+<script src="translationScript.js"></script>
+
+    
+</body>
+
+</html>
