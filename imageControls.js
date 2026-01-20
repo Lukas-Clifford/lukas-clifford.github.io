@@ -4,6 +4,8 @@ const imageControls = document.getElementById('imageControls'); // Contenedor pa
 
 
 async function generateImageControls() {
+    imageControls.style.display = 'block'; // Asegurarse de que el contenedor de controles sea visible
+
     // Detectar todas las imágenes en la vista previa del blog
     const images = blogContent.querySelectorAll('img');
 
