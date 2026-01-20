@@ -23,7 +23,8 @@ async function translateContent(apiKey, blog, lang) {
     }
 
     const data = await response.json();
-    return JSON.parse(data.choices[0].message.content).blog;
+    console.log("Traducción recibida:", data.choices[0].message.content);
+    return JSON.parse(data.choices[0].message.content);
 }
 
 // Manejar la traducción al hacer clic en el botón
@@ -66,10 +67,8 @@ document.getElementById("translateButton").addEventListener("click", async () =>
 document.querySelectorAll(".xml-button").forEach(button => {
     button.addEventListener("click", () => {
         const lang = button.dataset.lang;
-        const date = new Date().toISOString().slice(0, 19).replace("T", " ");
-        const categories = document.getElementById("categories").value.split(",").map(c => c.trim());
         if (translations[lang]) {
-            downloadXML(translations[lang], categories, date, lang);
+            downloadXML(translations[lang], lang);
         } else {
             alert("El contenido en este idioma aún no ha sido generado.");
         }

@@ -73,15 +73,15 @@ async function generateBlog(apiKey, orientation, images, products) {
         throw error;
     }
 
-
     const data = await response.json();
     return JSON.parse(data.choices[0].message.content);
 }
 
 // Crear y descargar el XML
-function downloadXML(blog, categories, date) {
+function downloadXML(blog,language = "es") {
     // Generar las categorías formateadas para WordPress
-    const formattedCategories = categories.map(category => `<category domain="category"><![CDATA[${category}]]></category>`).join("\n    ");
+    const formattedCategories = document.getElementById("categories").value.split(",").map(c => c.trim()).map(category => `<category domain="category"><![CDATA[${category}]]></category>`).join("\n    ");
+    
 
     // Nueva plantilla XML para WordPress
     const xmlTemplate = `<?xml version="1.0" encoding="UTF-8"?>
@@ -103,7 +103,7 @@ function downloadXML(blog, categories, date) {
       ${formattedCategories}
 
       <wp:post_id>0</wp:post_id>
-      <wp:post_date>${date}</wp:post_date>
+      <wp:post_date>${new Date().toISOString().slice(0, 19).replace("T", " ") }</wp:post_date>
       <wp:post_type>post</wp:post_type>
       <wp:status>publish</wp:status>
     </item>
@@ -114,7 +114,7 @@ function downloadXML(blog, categories, date) {
     const blob = new Blob([xmlTemplate], { type: "application/xml" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "blog.xml";
+    a.download = `blog_${language}.xml`;
     a.click();
 }
 

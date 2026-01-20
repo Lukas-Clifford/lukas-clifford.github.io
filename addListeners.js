@@ -47,9 +47,5 @@ document.getElementById("addProduct").addEventListener("click", () => {
 
 // Descargar el XML al hacer clic en el botón
 document.getElementById("downloadXML").addEventListener("click", () => {
-    if (generatedBlogContent) {
-        downloadXML(generatedBlogContent.blog, generatedBlogContent.categories, generatedBlogContent.date);
-    } else {
-        alert("No se ha generado ningún blog aún.");
-    }
+    downloadXML(window.generatedBlogContent);
 });

@@ -1,6 +1,4 @@
-window.generatedBlogContent = null; // Almacena el contenido del blog generado para descargarlo como XML más tarde
-
-
+window.generatedBlogContent = null;
 // Manejo del botón para generar el blog
 document.getElementById("generateBlog").addEventListener("click", async () => {
     const apiKey = document.getElementById("apiKey").value;
@@ -23,7 +21,7 @@ document.getElementById("generateBlog").addEventListener("click", async () => {
         image_url: item.querySelector(".product-image-url").value || "",
         shop_url: item.querySelector(".product-shop-url").value || "",
     }));
-    const categories = document.getElementById("categories").value.split(",").map(c => c.trim());
+    
 
     // Validar solamente los campos obligatorios
     if (!apiKey || !orientation || categories.length === 0) {
@@ -36,9 +34,6 @@ document.getElementById("generateBlog").addEventListener("click", async () => {
         generateButton.disabled = true; // Deshabilitar el botón
         generateButton.textContent = "Generando..."; // Cambiar el texto del botón
         const blog = await generateBlog(apiKey, orientation, images, products);
-
-        window.generatedBlogContent = { blog, categories, date: new Date().toISOString().slice(0, 19).replace("T", " ") };
-
 
         // Si no hay productos, eliminamos el apartado de productos relacionados del contenido
         if (products.length === 0) {
@@ -53,7 +48,9 @@ document.getElementById("generateBlog").addEventListener("click", async () => {
         document.getElementById("blogContent").innerHTML = blog.content;
         document.getElementById("downloadXML").style.display = "block"; // Botón de descarga visible
         document.getElementById("translateButton").style.display = "block"; // Botón de traducción visible
+        generateImageControls(); // Cargar controles de tamaño para imágenes
 
+        window.generatedBlogContent = blog; // Guardar el blog generado globalmente
     } catch (error) {
         console.error("Error al generar el blog:", error);
         alert("Ha ocurrido un error. Revisa la consola.");
